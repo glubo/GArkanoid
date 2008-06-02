@@ -746,6 +746,7 @@ void Arkanoid::DrawBonus(BONUS_TYPE type, vec2 pos){
 		case SUPERBALL:glColor3ub(255,0,0);break;//GR_replace
 		case BIGSCORE:glColor3ub(200,0,200);break;//GR_replace
 		case LEVEL:glColor3ub(0,0,255);break;//GR_replace
+		default:break;
 	};
 	glEnable(GL_TEXTURE_2D);//GR_replace
 	TRECT(pos.x(),pos.y(),16,16);//GR_replace
@@ -888,58 +889,6 @@ void Arkanoid::LoadTextures()
 
 }
 
-void Arkanoid::BuildFont()
-{
- float cx,cy;//GR_replace
- int loop1;//GR_replace
-	base=glGenLists(256);									// Creating 256 Display Lists//GR_replace
-	glBindTexture(GL_TEXTURE_2D, tfont);				// Select Our Font Texture//GR_replace
-	for (loop1=0; loop1<256; loop1++)						// Loop Through All 256 Lists//GR_replace
-	{//GR_replace
-		cx=(float)(loop1%16)/16.0f;						// X Position Of Current Character//GR_replace
-		cy=(float)(loop1/16)/16.0f;						// Y Position Of Current Character//GR_replace
-//GR_replace
-		glNewList(base+loop1,GL_COMPILE);					// Start Building A List//GR_replace
-			glBegin(GL_QUADS);								// Use A Quad For Each Character//GR_replace
-				glTexCoord2f(cx,1.0f-cy-0.0625f);			// Texture Coord (Bottom Left)//GR_replace
-				glVertex2d(0,16);							// Vertex Coord (Bottom Left)//GR_replace
-				glTexCoord2f(cx+0.0625f,1.0f-cy-0.0625f);	// Texture Coord (Bottom Right)//GR_replace
-				glVertex2i(16,16);							// Vertex Coord (Bottom Right)//GR_replace
-				glTexCoord2f(cx+0.0625f,1.0f-cy);			// Texture Coord (Top Right)//GR_replace
-				glVertex2i(16,0);							// Vertex Coord (Top Right)//GR_replace
-				glTexCoord2f(cx,1.0f-cy);					// Texture Coord (Top Left)//GR_replace
-				glVertex2i(0,0);							// Vertex Coord (Top Left)//GR_replace
-			glEnd();										// Done Building Our Quad (Character)//GR_replace
-			glTranslated(15,0,0);							// Move To The Right Of The Character//GR_replace
-		glEndList();										// Done Building The Display List//GR_replace
-	}														// Loop Until All 256 Are Built//GR_replace
-}
-
-
-GLvoid Arkanoid::KillFont(GLvoid)
-{
- glDeleteLists(base,256);//GR_replace
-}
-
-GLvoid Arkanoid::glPrint(GLint x,GLint y,int set, const char *text)
-{
-	if (set>1)												// Did User Choose An Invalid Character Set?//GR_replace
-	{//GR_replace
-		set=1;												// If So, Select Set 1 (Italic)//GR_replace
-	}//GR_replace
-	glEnable(GL_TEXTURE_2D);								// Enable Texture Mapping//GR_replace
-	glLoadIdentity();										// Reset The Modelview Matrix//GR_replace
-	glTranslated(x,y,0);									// Position The Text (0,0 - Bottom Left)//GR_replace
-	glListBase(base-32+(128*set));							// Choose The Font Set (0 or 1)//GR_replace
-//GR_replace
-	if (set==0)												// If Set 0 Is Being Used Enlarge Font//GR_replace
-	{//GR_replace
-		glScalef(1.5f,2.0f,1.0f);							// Enlarge Font Width And Height//GR_replace
-	}//GR_replace
-//GR_replace
-	glCallLists(strlen(text),GL_UNSIGNED_BYTE, text);		// Write The Text To The Screen//GR_replace
-	glDisable(GL_TEXTURE_2D);								// Disable Texture Mapping//GR_replace
-};//GR_replace
 
 void Arkanoid::NextLevel(){
 	alevel->StuckBall();
