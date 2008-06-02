@@ -391,6 +391,7 @@ public:
 		stick.Size( vec2(STICK_WIDTH, STICK_HEIGHT));
 		stick.Pos( vec2( NUM_COLS*COL_WIDTH/2, BOTTOM - STICK_HEIGHT/2) );
 		ball.Pos( stick.Pos()-vec2(0,STICK_HEIGHT/2));
+		ball.Slow();
 		stuckball=true;
 
 		return true;
@@ -580,10 +581,6 @@ void Arkanoid::Redraw(){
 	bonus->Redraw();
 	alevel->Redraw();
 	
-	
-	glPushMatrix();
-	//glPrint(0,0,0,"Hello WOrld!!!");
-	glPopMatrix();
 };
 Mix_Chunk * load_sound(char * file)                     // Load a sound file
 {
@@ -821,8 +818,8 @@ void Arkanoid::InitGL(int Width, int Height)
     glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
     glClearDepth(1.0);
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-//    glEnable(GL_BLEND);
-  //  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    //glEnable(GL_BLEND);
+    //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glViewport(0, 0, Width, Height);
     glMatrixMode(GL_PROJECTION);
