@@ -572,7 +572,7 @@ void Arkanoid::Update(float dtime){
 };
 
 void Arkanoid::Redraw(){
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT);//GR_replace
 //	glBindTexture(GL_TEXTURE_2D,twall);
 //	glEnable(GL_TEXTURE_2D);
 //	TRECT(0,0,640,480);	
@@ -620,17 +620,17 @@ Arkanoid::Arkanoid(){
     		return;
   	}
 	
-       SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
+       SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );//GR_replace
 	
-	if ( SDL_SetVideoMode(COL_WIDTH*NUM_COLS, 480, 0, SDL_OPENGL) == NULL ) {
-	    fprintf(stderr, "Unable to create OpenGL screen: %s\n", SDL_GetError());
-	    SDL_Quit();
-	    return;
+	if ( SDL_SetVideoMode(COL_WIDTH*NUM_COLS, 480, 0, SDL_OPENGL) == NULL ) {//GR_replace
+	    fprintf(stderr, "Unable to create OpenGL screen: %s\n", SDL_GetError());//GR_replace
+	    SDL_Quit();//GR_replace
+	    return;//GR_replace
 	}
 
 	SDL_WM_SetCaption("Garkanoid", NULL);
 
-  	InitGL(COL_WIDTH*NUM_COLS, 480);
+  	InitGL(COL_WIDTH*NUM_COLS, 480);//GR_replace
 	if(!alevel->NewLevel("lev1.txt")){printf("level not found\n");done=true;};
   if (Mix_OpenAudio(22050, AUDIO_S16, 2, 512) < 0)
   {
@@ -662,7 +662,7 @@ void Arkanoid::Game()
 
 		Update(0.001*(atime-ltime));
 		if(!game)done=1;
-		SDL_GL_SwapBuffers();
+		SDL_GL_SwapBuffers();//GR_replace
 		Redraw();
 		frames++;
 		ltime=atime;
@@ -709,12 +709,12 @@ Arkanoid::~Arkanoid(){
 };
 
 void Arkanoid::DrawParticle(vec2 pos){
-	glColor3ub(200,200,200);
+	glColor3ub(200,200,200);//GR_replace
 	
-	glBindTexture(GL_TEXTURE_2D,tbrick);
-	glEnable(GL_TEXTURE_2D);
-		TRECT(pos.x(), pos.y(), COL_WIDTH, ROW_HEIGHT);
-	glDisable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D,tbrick);//GR_replace
+	glEnable(GL_TEXTURE_2D);//GR_replace
+		TRECT(pos.x(), pos.y(), COL_WIDTH, ROW_HEIGHT);//GR_replace
+	glDisable(GL_TEXTURE_2D);//GR_replace
 	
 };
 void Arkanoid::DrawBrick(const Brick &b, int x, int y){
@@ -722,52 +722,52 @@ void Arkanoid::DrawBrick(const Brick &b, int x, int y){
 	{
 		case BRICK_NONE: return;
 		case BRICK_NORMAL:
-			glColor3ub(155,0,0);break;
+			glColor3ub(155,0,0);break;//GR_replace
 		case BRICK_HARD:
-			glColor3ub(100,50,50);break;
+			glColor3ub(100,50,50);break;//GR_replace
 		case BRICK_NONBREAKABLE:
-			glColor3ub(100,100,100);break;
+			glColor3ub(100,100,100);break;//GR_replace
 	};
-	glBindTexture(GL_TEXTURE_2D,tbrick);
-	glEnable(GL_TEXTURE_2D);
-		TRECT(x*COL_WIDTH, y*ROW_HEIGHT, COL_WIDTH, ROW_HEIGHT);
-	glDisable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D,tbrick);//GR_replace
+	glEnable(GL_TEXTURE_2D);//GR_replace
+		TRECT(x*COL_WIDTH, y*ROW_HEIGHT, COL_WIDTH, ROW_HEIGHT);//GR_replace
+	glDisable(GL_TEXTURE_2D);//GR_replace
 	
 };
 
 void Arkanoid::DrawBonus(BONUS_TYPE type, vec2 pos){
-	glBindTexture(GL_TEXTURE_2D,tbonus);
+	glBindTexture(GL_TEXTURE_2D,tbonus);//GR_replace
 	
 	switch(type)
 	{
-		case SIZE:glColor3ub(100,100,0);break;
-		case SLOW:glColor3ub(0,200,0);break;
-		case SCORE:glColor3ub(100,0,100);break;
-		case SUPERBALL:glColor3ub(255,0,0);break;
-		case BIGSCORE:glColor3ub(200,0,200);break;
-		case LEVEL:glColor3ub(0,0,255);break;
+		case SIZE:glColor3ub(100,100,0);break;//GR_replace
+		case SLOW:glColor3ub(0,200,0);break;//GR_replace
+		case SCORE:glColor3ub(100,0,100);break;//GR_replace
+		case SUPERBALL:glColor3ub(255,0,0);break;//GR_replace
+		case BIGSCORE:glColor3ub(200,0,200);break;//GR_replace
+		case LEVEL:glColor3ub(0,0,255);break;//GR_replace
 	};
-	glEnable(GL_TEXTURE_2D);
-	TRECT(pos.x(),pos.y(),16,16);
-	glDisable(GL_TEXTURE_2D);
+	glEnable(GL_TEXTURE_2D);//GR_replace
+	TRECT(pos.x(),pos.y(),16,16);//GR_replace
+	glDisable(GL_TEXTURE_2D);//GR_replace
 };
 
 void Arkanoid::DrawBall(vec2 &pos,bool super){
-	glColor3ub(255,255,255);
-	if(super)glColor3ub(255,0,0);
-	glBindTexture(GL_TEXTURE_2D,tball);
-	glEnable(GL_TEXTURE_2D);
-	TRECT(pos.x(),pos.y(),6,6);
-	glDisable(GL_TEXTURE_2D);
+	glColor3ub(255,255,255);//GR_replace
+	if(super)glColor3ub(255,0,0);//GR_replace
+	glBindTexture(GL_TEXTURE_2D,tball);//GR_replace
+	glEnable(GL_TEXTURE_2D);//GR_replace
+	TRECT(pos.x(),pos.y(),6,6);//GR_replace
+	glDisable(GL_TEXTURE_2D);//GR_replace
 };
 
 void Arkanoid::DrawStick(vec2 &pos,vec2 &size){
 	//glColor3ub(55,255,255);
-	glColor3ub(255,255,255);
-	glBindTexture(GL_TEXTURE_2D,tstick);
-	glEnable(GL_TEXTURE_2D);
-	TRECT(pos.x()-size.x(),pos.y()-size.y(),size.x()*2,size.y()*2);
-	glDisable(GL_TEXTURE_2D);
+	glColor3ub(255,255,255);//GR_replace
+	glBindTexture(GL_TEXTURE_2D,tstick);//GR_replace
+	glEnable(GL_TEXTURE_2D);//GR_replace
+	TRECT(pos.x()-size.x(),pos.y()-size.y(),size.x()*2,size.y()*2);//GR_replace
+	glDisable(GL_TEXTURE_2D);//GR_replace
 };
 
 void Arkanoid::DeathBrick(int x, int y){
@@ -810,7 +810,7 @@ float Arkanoid::GetStickVel(){
 };
 
 
-void Arkanoid::InitGL(int Width, int Height)
+void Arkanoid::InitGL(int Width, int Height)//GR_replace
 {
     LoadTextures();
 //    glShadeModel(GL_SMOOTH);
@@ -833,113 +833,113 @@ void Arkanoid::InitGL(int Width, int Height)
 
 void Arkanoid::LoadTextures()
 {
-	brick=IMG_Load("brick.bmp");
+	brick=IMG_Load("brick.bmp");//GR_replace
 
     // Create Texture
-    glGenTextures(1, &tbrick);
-    glBindTexture(GL_TEXTURE_2D, tbrick);   // 2d texture (x and y size)
-
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR); // scale linearly when image bigger than texture
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR); // scale linearly when image smalled than texture
+    glGenTextures(1, &tbrick);//GR_replace
+    glBindTexture(GL_TEXTURE_2D, tbrick);   // 2d texture (x and y size)//GR_replace
+//GR_replace
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR); // scale linearly when image bigger than texture//GR_replace
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR); // scale linearly when image smalled than texture//GR_replace
 
     // 2d texture, level of detail 0 (normal), 3 components (red, green, blue), x size from image, y size from image,
     // border 0 (normal), rgb color data, unsigned byte data, and finally the data itself.
-    glTexImage2D(GL_TEXTURE_2D, 0, 3, brick->w, brick->h, 0, GL_RGB, GL_UNSIGNED_BYTE, brick->pixels);
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, brick->w, brick->h, 0, GL_RGB, GL_UNSIGNED_BYTE, brick->pixels);//GR_replace
 
-    brick=IMG_Load("ball.bmp");
-
-    // Create Texture
-    glGenTextures(1, &tball);
-    glBindTexture(GL_TEXTURE_2D, tball);   // 2d texture (x and y size)
-
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR); // scale linearly when image bigger than texture
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR); // scale linearly when image smalled than texture
-
-    // 2d texture, level of detail 0 (normal), 3 components (red, green, blue), x size from image, y size from image,
-    // border 0 (normal), rgb color data, unsigned byte data, and finally the data itself.
-    glTexImage2D(GL_TEXTURE_2D, 0, 3, brick->w, brick->h, 0, GL_RGB, GL_UNSIGNED_BYTE, brick->pixels);
-
-    brick=IMG_Load("bonus.bmp");
+    brick=IMG_Load("ball.bmp");//GR_replace
 
     // Create Texture
-    glGenTextures(1, &tbonus);
-    glBindTexture(GL_TEXTURE_2D, tbonus);   // 2d texture (x and y size)
+    glGenTextures(1, &tball);//GR_replace
+    glBindTexture(GL_TEXTURE_2D, tball);   // 2d texture (x and y size)//GR_replace
 
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR); // scale linearly when image bigger than texture
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR); // scale linearly when image smalled than texture
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR); // scale linearly when image bigger than texture//GR_replace
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR); // scale linearly when image smalled than texture//GR_replace
 
-    // 2d texture, level of detail 0 (normal), 3 components (red, green, blue), x size from image, y size from image,
-    // border 0 (normal), rgb color data, unsigned byte data, and finally the data itself.
-    glTexImage2D(GL_TEXTURE_2D, 0, 3, brick->w, brick->h, 0, GL_BGR, GL_UNSIGNED_BYTE, brick->pixels);
+    // 2d texture, level of detail 0 (normal), 3 components (red, green, blue), x size from image, y size from image,//GR_replace
+    // border 0 (normal), rgb color data, unsigned byte data, and finally the data itself.//GR_replace
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, brick->w, brick->h, 0, GL_RGB, GL_UNSIGNED_BYTE, brick->pixels);//GR_replace
+
+    brick=IMG_Load("bonus.bmp");//GR_replace
+
+    // Create Texture
+    glGenTextures(1, &tbonus);//GR_replace
+    glBindTexture(GL_TEXTURE_2D, tbonus);   // 2d texture (x and y size)//GR_replace
+
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR); // scale linearly when image bigger than texture//GR_replace
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR); // scale linearly when image smalled than texture//GR_replace
+
+    // 2d texture, level of detail 0 (normal), 3 components (red, green, blue), x size from image, y size from image,//GR_replace
+    // border 0 (normal), rgb color data, unsigned byte data, and finally the data itself.//GR_replace
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, brick->w, brick->h, 0, GL_BGR, GL_UNSIGNED_BYTE, brick->pixels);//GR_replace
 
  
-    brick=IMG_Load("stick.bmp");
+    brick=IMG_Load("stick.bmp");//GR_replace
 
-    // Create Texture
-    glGenTextures(1, &tstick);
-    glBindTexture(GL_TEXTURE_2D, tstick);   // 2d texture (x and y size)
+    // Create Texture//GR_replace
+    glGenTextures(1, &tstick);//GR_replace
+    glBindTexture(GL_TEXTURE_2D, tstick);   // 2d texture (x and y size)//GR_replace
 
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR); // scale linearly when image bigger than texture
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR); // scale linearly when image smalled than texture
-
-    // 2d texture, level of detail 0 (normal), 3 components (red, green, blue), x size from image, y size from image,
-    // border 0 (normal), rgb color data, unsigned byte data, and finally the data itself.
-    glTexImage2D(GL_TEXTURE_2D, 0, 3, brick->w, brick->h, 0, GL_BGR, GL_UNSIGNED_BYTE, brick->pixels);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR); // scale linearly when image bigger than texture//GR_replace
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR); // scale linearly when image smalled than texture//GR_replace
+//GR_replace
+    // 2d texture, level of detail 0 (normal), 3 components (red, green, blue), x size from image, y size from image,//GR_replace
+    // border 0 (normal), rgb color data, unsigned byte data, and finally the data itself.//GR_replace
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, brick->w, brick->h, 0, GL_BGR, GL_UNSIGNED_BYTE, brick->pixels);//GR_replace
 
 }
 
 void Arkanoid::BuildFont()
 {
- float cx,cy;
- int loop1;
-	base=glGenLists(256);									// Creating 256 Display Lists
-	glBindTexture(GL_TEXTURE_2D, tfont);				// Select Our Font Texture
-	for (loop1=0; loop1<256; loop1++)						// Loop Through All 256 Lists
-	{
-		cx=(float)(loop1%16)/16.0f;						// X Position Of Current Character
-		cy=(float)(loop1/16)/16.0f;						// Y Position Of Current Character
-
-		glNewList(base+loop1,GL_COMPILE);					// Start Building A List
-			glBegin(GL_QUADS);								// Use A Quad For Each Character
-				glTexCoord2f(cx,1.0f-cy-0.0625f);			// Texture Coord (Bottom Left)
-				glVertex2d(0,16);							// Vertex Coord (Bottom Left)
-				glTexCoord2f(cx+0.0625f,1.0f-cy-0.0625f);	// Texture Coord (Bottom Right)
-				glVertex2i(16,16);							// Vertex Coord (Bottom Right)
-				glTexCoord2f(cx+0.0625f,1.0f-cy);			// Texture Coord (Top Right)
-				glVertex2i(16,0);							// Vertex Coord (Top Right)
-				glTexCoord2f(cx,1.0f-cy);					// Texture Coord (Top Left)
-				glVertex2i(0,0);							// Vertex Coord (Top Left)
-			glEnd();										// Done Building Our Quad (Character)
-			glTranslated(15,0,0);							// Move To The Right Of The Character
-		glEndList();										// Done Building The Display List
-	}														// Loop Until All 256 Are Built
+ float cx,cy;//GR_replace
+ int loop1;//GR_replace
+	base=glGenLists(256);									// Creating 256 Display Lists//GR_replace
+	glBindTexture(GL_TEXTURE_2D, tfont);				// Select Our Font Texture//GR_replace
+	for (loop1=0; loop1<256; loop1++)						// Loop Through All 256 Lists//GR_replace
+	{//GR_replace
+		cx=(float)(loop1%16)/16.0f;						// X Position Of Current Character//GR_replace
+		cy=(float)(loop1/16)/16.0f;						// Y Position Of Current Character//GR_replace
+//GR_replace
+		glNewList(base+loop1,GL_COMPILE);					// Start Building A List//GR_replace
+			glBegin(GL_QUADS);								// Use A Quad For Each Character//GR_replace
+				glTexCoord2f(cx,1.0f-cy-0.0625f);			// Texture Coord (Bottom Left)//GR_replace
+				glVertex2d(0,16);							// Vertex Coord (Bottom Left)//GR_replace
+				glTexCoord2f(cx+0.0625f,1.0f-cy-0.0625f);	// Texture Coord (Bottom Right)//GR_replace
+				glVertex2i(16,16);							// Vertex Coord (Bottom Right)//GR_replace
+				glTexCoord2f(cx+0.0625f,1.0f-cy);			// Texture Coord (Top Right)//GR_replace
+				glVertex2i(16,0);							// Vertex Coord (Top Right)//GR_replace
+				glTexCoord2f(cx,1.0f-cy);					// Texture Coord (Top Left)//GR_replace
+				glVertex2i(0,0);							// Vertex Coord (Top Left)//GR_replace
+			glEnd();										// Done Building Our Quad (Character)//GR_replace
+			glTranslated(15,0,0);							// Move To The Right Of The Character//GR_replace
+		glEndList();										// Done Building The Display List//GR_replace
+	}														// Loop Until All 256 Are Built//GR_replace
 }
 
 
 GLvoid Arkanoid::KillFont(GLvoid)
 {
- glDeleteLists(base,256);
+ glDeleteLists(base,256);//GR_replace
 }
 
 GLvoid Arkanoid::glPrint(GLint x,GLint y,int set, const char *text)
 {
-	if (set>1)												// Did User Choose An Invalid Character Set?
-	{
-		set=1;												// If So, Select Set 1 (Italic)
-	}
-	glEnable(GL_TEXTURE_2D);								// Enable Texture Mapping
-	glLoadIdentity();										// Reset The Modelview Matrix
-	glTranslated(x,y,0);									// Position The Text (0,0 - Bottom Left)
-	glListBase(base-32+(128*set));							// Choose The Font Set (0 or 1)
-
-	if (set==0)												// If Set 0 Is Being Used Enlarge Font
-	{
-		glScalef(1.5f,2.0f,1.0f);							// Enlarge Font Width And Height
-	}
-
-	glCallLists(strlen(text),GL_UNSIGNED_BYTE, text);		// Write The Text To The Screen
-	glDisable(GL_TEXTURE_2D);								// Disable Texture Mapping
-};
+	if (set>1)												// Did User Choose An Invalid Character Set?//GR_replace
+	{//GR_replace
+		set=1;												// If So, Select Set 1 (Italic)//GR_replace
+	}//GR_replace
+	glEnable(GL_TEXTURE_2D);								// Enable Texture Mapping//GR_replace
+	glLoadIdentity();										// Reset The Modelview Matrix//GR_replace
+	glTranslated(x,y,0);									// Position The Text (0,0 - Bottom Left)//GR_replace
+	glListBase(base-32+(128*set));							// Choose The Font Set (0 or 1)//GR_replace
+//GR_replace
+	if (set==0)												// If Set 0 Is Being Used Enlarge Font//GR_replace
+	{//GR_replace
+		glScalef(1.5f,2.0f,1.0f);							// Enlarge Font Width And Height//GR_replace
+	}//GR_replace
+//GR_replace
+	glCallLists(strlen(text),GL_UNSIGNED_BYTE, text);		// Write The Text To The Screen//GR_replace
+	glDisable(GL_TEXTURE_2D);								// Disable Texture Mapping//GR_replace
+};//GR_replace
 
 void Arkanoid::NextLevel(){
 	alevel->StuckBall();
