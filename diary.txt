@@ -1,0 +1,17 @@
+14:54	zacinam premyslet na designem
+14:59	rozhodl jsem se pro monolitycky zdrojak bez pouziti stavajiciho vlastniho kodu, a spinavy mix C a C++
+17:30	nadavam na svou volbu, zacinam mit zmatek v kodu, ale uz mam zakladni kostru, 4kb kodu
+18:23	navrat po flakani na forech a irc k praci
+18:35	konecne jsem dokoncil hadku na irc o duvodu ochlazeni po desti
+19:35	zakladni funkcionalita bez grafiky+inputu, 6kb kodu
+20:00	rozhodnuti prepsat pulku stavajiciho kodu kvuli forme
+21:40	dokonceno prepsani stavajiciho kodu, 6kb kodu
+22:32	doplneni jedne pozapomenute casti logiky- palky, 7kb kodu, zacinam psat pouze definice metod,bez deklaraci
+00:20	dokonceni studovani tutorialu k SDL- pocatek praci na grafice a inputu
+00:27	zjistuji ze jde SouthPark- pro tuto noc koncim prace na garkanoidu
+09:01	zacinam dnesni prace na garkanoidu, zacinam s grafikou a inputem
+10:08	zacinam resit problem s rychlosti
+10:12	problem je v SDL_GL_SwapBuffers, spusteni trva >100ms
+11:32	konence jsem vyresil problem s SDL_GL_SwapBuffers pridanim SDL_Delay(10) do smycky, FUCKING SDL
+13:20	mam konecne funkcni verzi s grafikou, jdu nakreslit grafiku
+15:28	hotova grafika cihlicek, micku a palky, vetsina zvuku

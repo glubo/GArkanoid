@@ -1,0 +1,1 @@
+datovy soubor je velmi jednoduchy, obsahuje sekvenci cisel zapsanych decimalne v ascii oddelenych mezerami, kazde predstavuje typ kostky(viz. enum BRICK_TYPE v garkanoid.cpp). jinak je to od horniho leveho rohu doleva, pak dou
