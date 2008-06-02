@@ -8,7 +8,7 @@
 #define NUM_ROWS 14
 #define ROW_HEIGHT 16
 #define COL_WIDTH  32
-#define BOTTOM 336
+#define BOTTOM (NUM_ROWS+2)*ROW_HEIGHT
 #define STICK_WIDTH 32
 #define STICK_HEIGHT 8
 #define BALL_SPEED 200.0f
@@ -760,7 +760,7 @@ void Arkanoid::DrawBall(vec2 &pos,bool super){
 	if(super)glColor3ub(255,0,0);
 	glBindTexture(GL_TEXTURE_2D,tball);
 	glEnable(GL_TEXTURE_2D);
-	TRECT(pos.x(),pos.y(),3,3);
+	TRECT(pos.x(),pos.y(),6,6);
 	glDisable(GL_TEXTURE_2D);
 };
 
