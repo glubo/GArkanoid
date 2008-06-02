@@ -1,6 +1,6 @@
 all: garkanoid
 CC=g++
-COPTS=`sdl-config --cflags` -O2 -g
+COPTS=`sdl-config --cflags` -O2 -g -Wall
 CLIBS=`sdl-config --libs` -lGL -lGLU -lSDL_image -lSDL_mixer -g
 
 
