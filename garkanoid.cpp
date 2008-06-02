@@ -11,7 +11,7 @@
 #define BOTTOM (NUM_ROWS+2)*ROW_HEIGHT
 #define STICK_WIDTH 32
 #define STICK_HEIGHT 8
-#define BALL_SPEED 200.0f
+#define BALL_SPEED 250.0f
 #define NUM_LEVELS 9
 
 #include <SDL.h>
