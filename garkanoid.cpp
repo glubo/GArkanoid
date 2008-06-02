@@ -320,7 +320,7 @@ public:
 	};
 	void Redraw(){gArkanoid->DrawBall(pos,super);};
 	void CollidedWithBrick(){
-		vel*=1.01;
+		vel*=1.005;
 		ivec2 rpos;
 		if(!super)
 		{
