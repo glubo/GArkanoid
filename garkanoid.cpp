@@ -758,7 +758,7 @@ void Arkanoid::DrawBall(vec2 &pos,bool super){
 	if(super)glColor3ub(255,0,0);//GR_replace
 	glBindTexture(GL_TEXTURE_2D,tball);//GR_replace
 	glEnable(GL_TEXTURE_2D);//GR_replace
-	TRECT(pos.x(),pos.y(),6,6);//GR_replace
+	TRECT(pos.x(),pos.y(),8,8);//GR_replace
 	glDisable(GL_TEXTURE_2D);//GR_replace
 };
 
